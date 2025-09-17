@@ -1,45 +1,48 @@
 #include <stdio.h>
 
-void* swapdouble(double* pa, double* pb);
+void* swapdouble (double* pa, double* pb);
+
 int test_print_array();
-int tast_swapDouble();
-int test_function_pointer()
+int test_swapDouble();
+int test_function_pointer();
 
-int main(void) {
+int main(void){
 	test_print_array();
-
+	test_swapDouble();
+	test_function_pointer();
 	return 0;
-	
-
-
 
 }
-int tast_swapDouble()
+
+int test_swapDouble()
 {
 	double a = 3.14;
 	double b = 5.12;
 
 	double* presult = (double*)swapdouble(&a, &b);
-	if (presult = NULL)
+	if (presult == NULL)
 	{
 		printf("뭔가 잘못되었어\n");
 	}
 	else
 	{
-		printf("a = %f, b =%f", a, b);
+		printf("a = %f, b = %f/n", a, b);
 	}
+	return 0;
 }
 
 void * swapdouble(double* pa, double* pb)
 {
 	//1. 입력 값 정상인지 체크 : null이 아니어야 함!!
-	if (pa ==NULL|| pb == NULL)
+	if (pa == NULL || pb == NULL)
 	{
 		return NULL;
 
 
 	}
-	//2. SWAP TWO VALUSE
+
+	//2. SWAP TWO VALUES 
+
 	double tmp = *pa;
 	*pa = *pb;
 	*pb = tmp;
@@ -76,9 +79,9 @@ int test_print_array()
 void print_array_double(double arr[], int sz)
 {
 	
-	for (int i = 0; i < sz; i++, arr++)
+	for (int i = 0; i < sz; i++)
 	{
-		printf("%.lf ", arr[i]);
+		printf("%.1lf ", arr[i]);
 
 	}
 	printf("\n");
@@ -104,7 +107,7 @@ void print_Array_Double(double* arr, int sz)
 //입력: 두 실수
 //출력: 더한 값
 
-double add(int a, int b)
+double add(double a, double b)
 {
 
 	return a + b;
@@ -124,7 +127,7 @@ double sub(double a, double b)
 
 double mul (double a, double b)
 	{
-	return a + b;
+	return a * b;
 }
 
 int test_function_pointer()
@@ -132,14 +135,17 @@ int test_function_pointer()
 	double (*pfunc)(double, double) = NULL;
 	double result = 0.0;
 
+
 	pfunc = add;
+	printf ("add(3,4)= %f\n",add(3.0, 4.0));
 
-	printf = ("add(3,4)= %f\n") add(3.0, 4.0);
-
-	
 
 	result = (*pfunc) (3.0, 4.0); //7.0?
 	printf("(pfunc)(3,4)= %f\n", (*pfunc)(3.0, 4.0));
 
-}
+	pfunc = mul;
+	printf("pfunc = mul result = %f\n", (*pfunc) (3.0, 4.0));
 
+	return 0; 
+
+}

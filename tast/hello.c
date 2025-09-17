@@ -3,6 +3,7 @@
 void* swapdouble(double* pa, double* pb);
 int test_print_array();
 int tast_swapDouble();
+int test_function_pointer()
 
 int main(void) {
 	test_print_array();
@@ -92,3 +93,53 @@ void print_Array_Double(double* arr, int sz)
 	printf("\n");
 
 }
+
+
+
+
+
+
+
+//정수 덧셈 결과 반환
+//입력: 두 실수
+//출력: 더한 값
+
+double add(int a, int b)
+{
+
+	return a + b;
+
+}
+
+//기능: 정수 뺄셈
+//입략: 두 정수
+//출력: 뺀 값
+
+
+double sub(double a, double b)
+{
+	return a - b;
+}
+
+
+double mul (double a, double b)
+	{
+	return a + b;
+}
+
+int test_function_pointer()
+{
+	double (*pfunc)(double, double) = NULL;
+	double result = 0.0;
+
+	pfunc = add;
+
+	printf = ("add(3,4)= %f\n") add(3.0, 4.0);
+
+	
+
+	result = (*pfunc) (3.0, 4.0); //7.0?
+	printf("(pfunc)(3,4)= %f\n", (*pfunc)(3.0, 4.0));
+
+}
+
